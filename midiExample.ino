@@ -7,8 +7,8 @@ void loop(){
   //map sensor and get a useful range of values
   int reading = analogRead(A0);
   //50 to 500 is the range of values I got with my sensor
-  //0 to 12 will cover an octave in semitones
-  int betterValue=map(reading, 50, 500, 0, 12);
+  //0 to 11 will cover an octave in semitones
+  int betterValue=map(reading, 50, 500, 0, 11);
   //comment out this as it will be sent along with the midi data and mess up things
   //Serial.println(reading);
   
