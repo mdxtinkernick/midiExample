@@ -1,13 +1,24 @@
 void setup(){
-  Serial.begin(9600); 
+  //change serial speed to correct speed for midi
+  Serial.begin(31250); 
 }
 
 void loop(){
-  //first read sensor and get a sense of the range of values
-  int reading = analogRead(A0);  
-  Serial.println(reading);
+  //map sensor and get a useful range of values
+  int reading = analogRead(A0);
+  //50 to 500 is the range of values I got with my sensor
+  //0 to 12 will cover an octave in semitones
+  int betterValue=map(reading, 50, 500, 0, 12);
+  //comment out this as it will be sent along with the midi data and mess up things
+  //Serial.println(reading);
   
+  //Send midi note using better value for pitch
+  midiNote(0x90, betterValue, 127);
+  delay(10);
+  midiNote(0x90, betterValue, 0);
+  delay(10);
 
+  
 }
 
 
