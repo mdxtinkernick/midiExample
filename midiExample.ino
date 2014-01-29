@@ -16,7 +16,7 @@ void loop(){
   //we need to add an offset to it
   int startNote=50;
   midiNote(0x90, startNote+betterValue, 127);
-  delay(10);
+  delay(100);
   midiNote(0x90, startNote+betterValue, 0);
   delay(10);
 
