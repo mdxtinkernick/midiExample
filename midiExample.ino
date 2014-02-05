@@ -3,7 +3,7 @@ int scale[]={0, 2, 4, 5, 7, 9, 11, 12};
 
 
 void setup(){
-  //change serial speed to correct speed for midi
+  //changed serial speed to correct speed for midi
   Serial.begin(31250); 
 }
 
