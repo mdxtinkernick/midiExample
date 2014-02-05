@@ -8,20 +8,22 @@ void setup(){
 }
 
 void loop(){
-  //map sensor and get a useful range of values
   int reading = analogRead(A0);
+  //map sensor and get a useful range of values
   //50 to 500 is the range of values I got with my sensor
-  //0 to 11 will cover an octave in semitones
+  //0 to 8 will cover an octave in a scale
   int betterValue=map(reading, 50, 500, 0, 8);
+  
   //comment out this as it will be sent along with the midi data and mess up things
   //Serial.println(reading);
+  
+  //add an offset to change the key
   int startNote=50;
-  //get it to play in a musical scale
+  
+  //get it to play in a musical scale by getting a value from an array that holds a musical scale
   int noteToPlay= startNote + scale[betterValue];
   
-  //betterValue by itself was too low (pitch 0 is very low
-  //we need to add an offset to it
-  
+  //play the note
   midiNote(0x90, noteToPlay, 127);
   delay(200);
   midiNote(0x90, noteToPlay, 0);
